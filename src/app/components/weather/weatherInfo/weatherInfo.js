@@ -18,24 +18,25 @@ export default function weatherInfo({ dataInfo }) {
 				<div className='card card-body mt-2 animated fadeInUp'>
 					{dataInfo.city && dataInfo.country && (
 						<p>
-							<i className='fas fa-location-arrow'></i> Location:{' '}
+							<i className='fas fa-location-arrow'></i> Ubicacion:{' '}
 							{dataInfo.city}, {dataInfo.country}
 						</p>
 					)}
 					{dataInfo.temperature && (
 						<p>
-							<i className='fas fa-temperature-low'></i> Temperature:{' '}
+							<i className='fas fa-temperature-low'></i> Temperatura:{' '}
 							{dataInfo.temperature} ℃, {dataInfo.description}
 						</p>
 					)}
 					{dataInfo.humidity && (
 						<p>
-							<i className='fas fa-water'></i> Humidity: {dataInfo.humidity}
+							<i className='fas fa-water'></i> Humedad: {dataInfo.humidity}
 						</p>
 					)}
 					{dataInfo.wind_speed && (
 						<p>
-							<i className='fas fa-wind'></i> Wind Speed: {dataInfo.wind_speed}
+							<i className='fas fa-wind'></i> Velocidad viento:{' '}
+							{dataInfo.wind_speed} m/s
 						</p>
 					)}
 				</div>
