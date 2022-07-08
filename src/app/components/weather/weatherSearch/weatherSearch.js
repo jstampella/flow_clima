@@ -11,14 +11,19 @@ import './weatherSearch.scss';
  *
  */
 export default function weatherSearch({ setData }) {
-	// Constantes
+	// Constantes estados
 	const [cord, setCord] = useState({ latitude: 0, longiude: 0 });
 	const [city, setCity] = useState('');
+	const [select, setSelect] = useState(false);
 	// Cambios de estados
 	useEffect(() => {
 		if ((cord.latitude !== 0 && cord.longiude !== 0) || city !== '')
 			getWeather();
 	}, [cord]);
+
+	useEffect(() => {
+		console.log(select);
+	}, [select]);
 
 	const getWeather = () => {
 		console.log('city', city);
@@ -84,6 +89,7 @@ export default function weatherSearch({ setData }) {
 			>
 				<div className='form-group d-flex'>
 					<input
+						disabled={select}
 						defaultValue={city}
 						onChange={e => setCity(e.target.value)}
 						type='text'
@@ -94,6 +100,7 @@ export default function weatherSearch({ setData }) {
 					/>
 
 					<button
+						disabled={select}
 						className='btn-geo'
 						type='button'
 						onClick={e => {
@@ -109,6 +116,25 @@ export default function weatherSearch({ setData }) {
 							<path d='M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z' />
 						</svg>
 					</button>
+				</div>
+				<div className='form-group d-flex'>
+					<select
+						disabled={!select}
+						className='form-control'
+						name='city_select'
+						onChange={e => setCity(e.target.value)}
+					>
+						<option>Buenos Aires</option>
+						<option>Santa Fe</option>
+						<option>Parana</option>
+						<option>Mendoza</option>
+						<option>Cordoba</option>
+					</select>
+					<input
+						onChange={e => setSelect(!select)}
+						checked={select}
+						type='checkbox'
+					></input>
 				</div>
 				<button type='submit' className='btn btn-block btn-success'>
 					Buscar
