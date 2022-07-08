@@ -1,3 +1,5 @@
+import React from 'react';
+
 // add Api
 import { getWeatherApi } from '../../../api/weatherApi';
 

@@ -23,6 +23,7 @@ module.exports = {
 	},
 	plugins: ['react'],
 	rules: {
-		// "no-unused-vars": "warn",
+		'react/jsx-uses-react': 'error',
+		'react/jsx-uses-vars': 'error',
 	},
 };

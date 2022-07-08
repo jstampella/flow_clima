@@ -1,3 +1,4 @@
+import React from 'react';
 // add scss
 import './weatherInfo.scss';
 
