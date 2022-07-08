@@ -1,9 +1,27 @@
 import React from "react";
+import { getWeatherApi } from "../../../api/weatherApi";
 
-export default function weatherSearch() {
+export default function weatherSearch({ setData }) {
+  const getWeather = (e) => {
+    const { city, country } = e.target.elements;
+    const cityValue = city.value;
+    const countryValue = country.value;
+    getWeatherApi(cityValue, countryValue).then((result) => {
+      setData({
+        temperature: result.main.temp,
+        description: result.weather[0].description,
+        humidity: result.main.humidity,
+        wind_speed: result.wind.speed,
+        city: result.name,
+        country: result.sys.country,
+        error: null,
+      });
+    });
+    e.preventDefault();
+  };
   return (
     <div className="card card-body">
-      <form action="">
+      <form onSubmit={getWeather}>
         <div className="form-group">
           <input
             type="text"

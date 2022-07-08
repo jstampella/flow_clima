@@ -4,7 +4,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const devMode = process.env.NODE_ENV !== "production";
 
 module.exports = {
-  entry: ["./src/app/index.js"],
+  entry: ["@babel/polyfill", "./src/app/index.js"],
   output: {
     path: __dirname + "/build",
     filename: "bundle.js",
