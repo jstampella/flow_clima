@@ -6,17 +6,23 @@ export default function weatherSearch({ setData }) {
     const { city, country } = e.target.elements;
     const cityValue = city.value;
     const countryValue = country.value;
-    getWeatherApi(cityValue, countryValue).then((result) => {
-      setData({
-        temperature: result.main.temp,
-        description: result.weather[0].description,
-        humidity: result.main.humidity,
-        wind_speed: result.wind.speed,
-        city: result.name,
-        country: result.sys.country,
-        error: null,
+    if (cityValue && countryValue) {
+      getWeatherApi(cityValue, countryValue).then((result) => {
+        setData({
+          temperature: result.main.temp,
+          description: result.weather[0].description,
+          humidity: result.main.humidity,
+          wind_speed: result.wind.speed,
+          city: result.name,
+          country: result.sys.country,
+          error: null,
+        });
       });
-    });
+    } else {
+      setData({
+        error: "ingrese una ciudad y pais",
+      });
+    }
     e.preventDefault();
   };
   return (
