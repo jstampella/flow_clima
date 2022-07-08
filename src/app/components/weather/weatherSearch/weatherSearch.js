@@ -1,6 +1,11 @@
 import React from "react";
+//add Api
 import { getWeatherApi } from "../../../api/weatherApi";
 
+/**
+ * Componente que se utiliza para obtener de la api del clima la informacion de la ciudad
+ *
+ */
 export default function weatherSearch({ setData }) {
   const getWeather = (e) => {
     const { city, country } = e.target.elements;
@@ -8,15 +13,22 @@ export default function weatherSearch({ setData }) {
     const countryValue = country.value;
     if (cityValue && countryValue) {
       getWeatherApi(cityValue, countryValue).then((result) => {
-        setData({
-          temperature: result.main.temp,
-          description: result.weather[0].description,
-          humidity: result.main.humidity,
-          wind_speed: result.wind.speed,
-          city: result.name,
-          country: result.sys.country,
-          error: null,
-        });
+        console.log(result);
+        if (!result.error) {
+          setData({
+            temperature: result.main.temp,
+            description: result.weather[0].description,
+            humidity: result.main.humidity,
+            wind_speed: result.wind.speed,
+            city: result.name,
+            country: result.sys.country,
+            error: null,
+          });
+        } else {
+          setData({
+            error: result.error,
+          });
+        }
       });
     } else {
       setData({
