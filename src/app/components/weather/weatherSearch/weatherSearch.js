@@ -1,19 +1,32 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 // add Api
 import { getWeatherApi, getWeatherCurrentApi } from '../../../api/weatherApi';
+
+// import scss
+import './weatherSearch.scss';
 
 /**
  * Componente que se utiliza para obtener de la api del clima la informacion de la ciudad
  *
  */
 export default function weatherSearch({ setData }) {
-	const getWeather = e => {
-		const { city } = e.target.elements;
-		const cityValue = city.value;
-		if (cityValue) {
+	// Constantes
+	const [cord, setCord] = useState({ latitude: 0, longiude: 0 });
+	const [city, setCity] = useState('');
+	// Cambios de estados
+	useEffect(() => {
+		if ((cord.latitude !== 0 && cord.longiude !== 0) || city !== '')
+			getWeather();
+	}, [cord]);
+
+	const getWeather = () => {
+		console.log('city', city);
+		const { latitude, longitude } = cord;
+		if (city !== '' || (latitude !== 0 && longitude !== 0)) {
 			// obtener datos actuales
-			getWeatherCurrentApi(cityValue).then(result => {
+			getWeatherCurrentApi(city, cord).then(result => {
+				console.log(result);
 				if (result.cod === 200) {
 					setData({
 						temperature: result.main.temp,
@@ -21,7 +34,7 @@ export default function weatherSearch({ setData }) {
 						humidity: result.main.humidity,
 						wind_speed: result.wind.speed,
 						city: result.name,
-						country: result.country,
+						country: result.sys.country,
 						error: null,
 					});
 				} else {
@@ -31,7 +44,7 @@ export default function weatherSearch({ setData }) {
 				}
 			});
 			// obtener los datos extendidos
-			getWeatherApi(cityValue).then(result => {
+			getWeatherApi(city, cord).then(result => {
 				// 	// muestra los resultados si el cod de peticion es 200
 				if (result.cod === '200') {
 					const dataList = categorizeResults(result.list);
@@ -56,25 +69,50 @@ export default function weatherSearch({ setData }) {
 			});
 		} else {
 			setData({
-				error: 'ingrese una ciudad y pais',
+				error: 'ingrese una ciudad',
 			});
 		}
-		e.preventDefault();
 	};
 
 	return (
 		<div className='card card-body'>
-			<form onSubmit={getWeather}>
-				<div className='form-group'>
+			<form
+				onSubmit={e => {
+					e.preventDefault();
+					getWeather();
+				}}
+			>
+				<div className='form-group d-flex'>
 					<input
+						defaultValue={city}
+						onChange={e => setCity(e.target.value)}
 						type='text'
 						name='city'
 						placeholder='ingrese una ciudad'
 						className='form-control'
 						autoFocus
 					/>
+
+					<button
+						className='btn-geo'
+						type='button'
+						onClick={e => {
+							setCity('');
+							getGeolocation(setCord);
+						}}
+					>
+						<svg
+							xmlns='http://www.w3.org/2000/svg'
+							fill='currentColor'
+							viewBox='0 0 16 16'
+						>
+							<path d='M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z' />
+						</svg>
+					</button>
 				</div>
-				<button className='btn btn-block btn-success'>Buscar</button>
+				<button type='submit' className='btn btn-block btn-success'>
+					Buscar
+				</button>
 			</form>
 		</div>
 	);
@@ -115,4 +153,13 @@ const categorizeResults = list => {
 
 	// console.log('sortedResults', sortedResults);
 	return sortedResults;
+};
+
+const getGeolocation = setCord => {
+	navigator.geolocation.getCurrentPosition(function (position) {
+		setCord({
+			latitude: position.coords.latitude,
+			longitude: position.coords.longitude,
+		});
+	});
 };
