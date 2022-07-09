@@ -21,6 +21,10 @@ ul {
 			font-size: 1em;
 			justify-content: space-around;
 			font-family: $headingFont;
+			.high {
+				color: $color-danger;
+				font-weight: 600;
+			}
 		}
 		// p span:first-child {
 		// 	margin-right: 10px;

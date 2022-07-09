@@ -7,7 +7,6 @@ import { formatDate, formatTime } from '../../../utils/helpers';
 
 import './weatherExtra.scss';
 export default function weatherExtra({ dataExtra }) {
-	console.log(dataExtra);
 	return !dataExtra.error && dataExtra.length > 0 ? (
 		<div className='weatherExtra'>
 			{dataExtra.loading ? (

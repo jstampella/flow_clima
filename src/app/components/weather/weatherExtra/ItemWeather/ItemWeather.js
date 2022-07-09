@@ -21,8 +21,8 @@ export default function ItemWeather({
 			<img src={`http://openweathermap.org/img/wn/${icon}@2x.png`} alt={main} />
 			<span className='description'>{description}</span>
 			<div className='info_temp'>
-				<span className='high'>Max: {max}℃</span>
-				<span className='low'>Min: {min}℃</span>
+				<span className='high'>Max: {max}°C</span>
+				<span className='low'>Min: {min}°C</span>
 			</div>
 		</li>
 	);
