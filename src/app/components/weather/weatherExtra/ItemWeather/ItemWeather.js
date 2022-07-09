@@ -18,7 +18,7 @@ export default function ItemWeather({
 			<span>
 				<strong>{date}</strong>
 			</span>
-			<img src={`http://openweathermap.org/img/w/${icon}.png`} alt={main} />
+			<img src={`http://openweathermap.org/img/wn/${icon}@2x.png`} alt={main} />
 			<span className='description'>{description}</span>
 			<div className='info_temp'>
 				<span className='high'>Max: {max}℃</span>
