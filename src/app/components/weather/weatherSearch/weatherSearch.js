@@ -25,7 +25,9 @@ export default function weatherSearch({ setData }) {
 		console.log(select);
 	}, [select]);
 
+	// funcion para obtener desde las api los datos segun los valores ingresados
 	const getWeather = () => {
+		setData({ temperature: 0, loading: true });
 		console.log('city', city);
 		const { latitude, longitude } = cord;
 		if (city !== '' || (latitude !== 0 && longitude !== 0)) {

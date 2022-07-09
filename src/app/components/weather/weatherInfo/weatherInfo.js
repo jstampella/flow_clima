@@ -40,6 +40,10 @@ export default function weatherInfo({ dataInfo }) {
 						</p>
 					)}
 				</div>
+			) : dataInfo.loading ? (
+				<div className='card card-body mt-2 text-center'>
+					<i className='fas fa-spinner fa-spin fa-6x'></i>
+				</div>
 			) : (
 				<div className='card card-body mt-2 text-center'>
 					<i className='fas fa-sun fa-10x'></i>
