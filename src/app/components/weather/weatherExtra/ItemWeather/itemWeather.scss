@@ -1,0 +1,97 @@
+@import '../../../../scss/variables';
+ul {
+	display: flex;
+	margin: 0;
+	padding: 0;
+	flex-wrap: wrap;
+	li {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		flex: 1;
+		margin: 10px;
+		padding: 3px;
+		//box-shadow: 0px 0px 4px 1px rgb(0 0 0 / 64%);
+		border: 2px dashed $lightBlue;
+		border-radius: 6px;
+
+		.info_temp {
+			margin: 10px;
+			display: flex;
+			font-size: 1em;
+			justify-content: space-around;
+			font-family: $headingFont;
+		}
+		// p span:first-child {
+		// 	margin-right: 10px;
+		// }
+	}
+}
+// ul {
+// 	position: relative;
+// 	display: flex;
+// 	flex-direction: row;
+// 	justify-content: space-around;
+// 	list-style: none;
+// 	margin-bottom: 10px;
+// 	font-size: 0.8rem;
+
+// 	@media only screen and (min-width: 769px) {
+// 		display: inline-flex;
+// 		justify-content: flex-start;
+// 		width: 50%;
+
+// 		&:nth-of-type(2) {
+// 			margin-right: -10px;
+// 		}
+// 	}
+
+// 	li {
+// 		position: relative;
+// 		display: block;
+// 		width: calc((100% / 4) - 6px);
+// 		min-height: 152px;
+// 		background: white;
+// 		box-shadow: 2px 3px 5px -1px lighten(black, 40%);
+// 		padding: 4px 1px;
+// 		text-align: center;
+
+// 		@media only screen and (min-width: 769px) {
+// 			max-width: 85px;
+// 			min-height: 160px;
+// 			margin-right: 10px;
+// 		}
+
+// 		& > * {
+// 			display: block;
+// 		}
+
+// 		img {
+// 			// @extend %marginLeftRightAuto;
+// 		}
+
+// 		.description {
+// 			margin-bottom: 4px;
+// 			line-height: 1.1;
+// 		}
+
+// 		p {
+// 			position: absolute;
+// 			width: 100%;
+// 			bottom: 4px;
+// 			text-align: center;
+
+// 			span {
+// 				display: block;
+
+// 				&.high {
+// 					color: red;
+// 				}
+
+// 				&.low {
+// 					color: $lightBlue;
+// 				}
+// 			}
+// 		}
+// 	}
+// }

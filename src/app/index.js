@@ -3,6 +3,6 @@ import { render } from 'react-dom';
 
 import App from './App';
 
-import './index.scss';
+import './scss/index.scss';
 
 render(<App />, document.getElementById('app'));

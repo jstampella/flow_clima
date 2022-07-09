@@ -16,6 +16,7 @@ export default function weatherInfo({ dataInfo }) {
 			)}
 			{dataInfo.temperature ? (
 				<div className='card card-body mt-2 animated fadeInUp'>
+					<div className='titulo'>Datos actuales</div>
 					{dataInfo.city && dataInfo.country && (
 						<p>
 							<i className='fas fa-location-arrow'></i> Ubicacion:{' '}
@@ -30,7 +31,7 @@ export default function weatherInfo({ dataInfo }) {
 					)}
 					{dataInfo.humidity && (
 						<p>
-							<i className='fas fa-water'></i> Humedad: {dataInfo.humidity}
+							<i className='fas fa-water'></i> Humedad: {dataInfo.humidity}%
 						</p>
 					)}
 					{dataInfo.wind_speed && (
@@ -44,11 +45,11 @@ export default function weatherInfo({ dataInfo }) {
 				<div className='card card-body mt-2 text-center'>
 					<i className='fas fa-spinner fa-spin fa-6x'></i>
 				</div>
-			) : (
+			) : !dataInfo.error ? (
 				<div className='card card-body mt-2 text-center'>
 					<i className='fas fa-sun fa-10x'></i>
 				</div>
-			)}
+			) : null}
 		</div>
 	);
 }

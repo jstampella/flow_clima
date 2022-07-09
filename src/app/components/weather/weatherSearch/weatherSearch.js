@@ -10,7 +10,7 @@ import './weatherSearch.scss';
  * Componente que se utiliza para obtener de la api del clima la informacion de la ciudad
  *
  */
-export default function weatherSearch({ setData }) {
+export default function weatherSearch({ setData, setDataExtra }) {
 	// Constantes estados
 	const [cord, setCord] = useState({ latitude: 0, longiude: 0 });
 	const [city, setCity] = useState('');
@@ -21,19 +21,14 @@ export default function weatherSearch({ setData }) {
 			getWeather();
 	}, [cord]);
 
-	useEffect(() => {
-		console.log(select);
-	}, [select]);
-
 	// funcion para obtener desde las api los datos segun los valores ingresados
 	const getWeather = () => {
 		setData({ temperature: 0, loading: true });
-		console.log('city', city);
+		setDataExtra({ loading: true });
 		const { latitude, longitude } = cord;
 		if (city !== '' || (latitude !== 0 && longitude !== 0)) {
 			// obtener datos actuales
 			getWeatherCurrentApi(city, cord).then(result => {
-				console.log(result);
 				if (result.cod === 200) {
 					setData({
 						temperature: result.main.temp,
@@ -55,19 +50,10 @@ export default function weatherSearch({ setData }) {
 				// 	// muestra los resultados si el cod de peticion es 200
 				if (result.cod === '200') {
 					const dataList = categorizeResults(result.list);
-					console.log(dataList);
-					// 		setData({
-					// 			temperature: 10,
-					// 			description: 0,
-					// 			humidity: 0,
-					// 			wind_speed: 0,
-					// 			city: result.city.name,
-					// 			country: result.city.country,
-					// 			error: null,
-					// 		});
+					setDataExtra(dataList);
 				} else if (result.cod === '404' || result.error) {
 					// 		// if not found
-					setData({
+					setDataExtra({
 						error: result.error
 							? result.error
 							: 'Ocurrio un error al obtener los datos',
