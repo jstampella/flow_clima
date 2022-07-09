@@ -62,6 +62,11 @@ export default function weatherSearch({ setData, setDataExtra }) {
 			});
 		} else {
 			setData({
+				loading: false,
+				error: 'ingrese una ciudad',
+			});
+			setDataExtra({
+				loading: false,
 				error: 'ingrese una ciudad',
 			});
 		}
