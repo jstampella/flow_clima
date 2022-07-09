@@ -1,0 +1,17 @@
+@import '../../../scss/variables';
+.btn-geo {
+	background: transparent;
+	border: none;
+	width: 40px;
+	svg {
+		width: 100%;
+		&:hover {
+			color: $color-primary;
+		}
+	}
+}
+
+.d-flex {
+	align-items: center;
+	gap: 10px;
+}
