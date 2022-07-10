@@ -1,3 +1,5 @@
+#carpeta build
+build/
 # Logs
 logs
 *.log
