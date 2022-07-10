@@ -7,7 +7,8 @@ Aplicacion web para obtener la informacion actual y extendida por 5 dias de la c
 
 **Demo**
 
-**ScreenShot**
+### ScreenShot
+
 ![ScreenShot](./docs/screenshot.png 'pantalla principal')
 ![ScreenShot](./docs/screenshot2.png 'pantalla de busqueda')
 
