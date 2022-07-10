@@ -1,4 +1,5 @@
 import React from 'react';
+
 // add scss
 import './weatherInfo.scss';
 
@@ -6,46 +7,46 @@ import './weatherInfo.scss';
  * Componente que muestra la informacion del clima
  * a su vez comprueba si contiene error la consulta y muestra el error
  */
-export default function weatherInfo({ dataInfo }) {
+export default function weatherInfo({ data }) {
 	return (
 		<div className='weather-info'>
-			{dataInfo.error && (
+			{data.error && (
 				<div className='alert alert-danger'>
-					<p>{dataInfo.error}</p>
+					<p>{data.error}</p>
 				</div>
 			)}
-			{dataInfo.temperature ? (
+			{data.temperature ? (
 				<div className='card card-body mt-2 animated fadeInUp'>
 					<div className='titulo'>Datos actuales</div>
-					{dataInfo.city && dataInfo.country && (
+					{data.city && data.country && (
 						<p>
-							<i className='fas fa-location-arrow'></i> Ubicacion:{' '}
-							{dataInfo.city}, {dataInfo.country}
+							<i className='fas fa-location-arrow'></i> Ubicacion: {data.city},{' '}
+							{data.country}
 						</p>
 					)}
-					{dataInfo.temperature && (
+					{data.temperature && (
 						<p>
 							<i className='fas fa-temperature-low'></i> Temperatura:{' '}
-							{dataInfo.temperature} ℃, {dataInfo.description}
+							{data.temperature} ℃, {data.description}
 						</p>
 					)}
-					{dataInfo.humidity && (
+					{data.humidity && (
 						<p>
-							<i className='fas fa-water'></i> Humedad: {dataInfo.humidity}%
+							<i className='fas fa-water'></i> Humedad: {data.humidity}%
 						</p>
 					)}
-					{dataInfo.wind_speed && (
+					{data.wind_speed && (
 						<p>
 							<i className='fas fa-wind'></i> Velocidad viento:{' '}
-							{dataInfo.wind_speed} m/s
+							{data.wind_speed} m/s
 						</p>
 					)}
 				</div>
-			) : dataInfo.loading ? (
+			) : data.loading ? (
 				<div className='card card-body mt-2 text-center'>
 					<i className='fas fa-spinner fa-spin fa-6x'></i>
 				</div>
-			) : !dataInfo.error ? (
+			) : !data.error ? (
 				<div className='card card-body mt-2 text-center'>
 					<i className='fas fa-sun fa-10x'></i>
 				</div>
