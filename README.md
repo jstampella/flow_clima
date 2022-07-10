@@ -32,7 +32,12 @@ Este proyecto posee las librerias Prettier, Eslint, Axios, Babel, Testing, Jest,
 
 **Build**
 1 - npm run build
+2 - carpeta build/index.html
 
 **Formatear y validar codigo**
 1 - npm run format
 2 - npm run lint
+
+**Testeo de codigo**
+npm run test
+1- Valida el componente WeatherSearch si se renderiza bien.
