@@ -42,4 +42,7 @@ module.exports = {
 			filename: 'bundle.css',
 		}),
 	],
+	resolve: {
+		extensions: ['.js', '.jsx'],
+	},
 };
