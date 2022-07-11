@@ -16,6 +16,9 @@ module.exports = {
 			{
 				test: /\.js$/,
 				loader: 'babel-loader',
+				query: {
+					presets: ['es2015', 'react'],
+				},
 			},
 			{
 				test: /\.css$/,
@@ -42,4 +45,7 @@ module.exports = {
 			filename: 'bundle.css',
 		}),
 	],
+	resolve: {
+		extensions: ['.js', '.jsx', '.ts', '.tsx'],
+	},
 };

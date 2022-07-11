@@ -2,7 +2,7 @@
 	"name": "web",
 	"version": "1.0.0",
 	"description": "",
-	"main": "index.js",
+	"main": "src/app/index.js",
 	"scripts": {
 		"test": "react-scripts test",
 		"start": "webpack-dev-server --open",
