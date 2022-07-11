@@ -7,7 +7,7 @@ import './weatherSearch.scss';
  * Componente que se utiliza para obtener de la api del clima la informacion de la ciudad
  *
  */
-export default function weatherSearch({
+export default function WeatherSearch({
 	setData,
 	setDataExtra,
 	getDataExtraApi,

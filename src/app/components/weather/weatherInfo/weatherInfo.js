@@ -7,7 +7,7 @@ import './weatherInfo.scss';
  * Componente que muestra la informacion del clima
  * a su vez comprueba si contiene error la consulta y muestra el error
  */
-export default function weatherInfo({ data }) {
+export default function WeatherInfo({ data }) {
 	return (
 		<div className='weather-info'>
 			{data.error && (
