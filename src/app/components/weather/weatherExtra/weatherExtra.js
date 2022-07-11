@@ -6,7 +6,7 @@ import ItemWeather from './ItemWeather';
 import { formatDate, formatTime } from '../../../utils/helpers';
 
 import './weatherExtra.scss';
-export default function weatherExtra({ dataExtra }) {
+export default function WeatherExtra({ dataExtra }) {
 	return !dataExtra.error && dataExtra.length > 0 ? (
 		<div className='weatherExtra'>
 			{dataExtra.loading ? (
